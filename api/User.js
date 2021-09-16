@@ -27,11 +27,6 @@ router.post("/signup", (req, res) => {
       status: "FAILED",
       message: "Invalid email entered",
     });
-  } else if (!new Date(dateOfBirth).getTime()) {
-    res.json({
-      status: "FAILED",
-      message: "Invalid date of birth entered",
-    });
   } else if (password.length < 8) {
     res.json({
       status: "FAILED",
