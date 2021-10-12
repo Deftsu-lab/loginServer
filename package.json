@@ -16,7 +16,10 @@
     "googleapis": "^88.2.0",
     "mongoose": "^5.10.2",
     "nodemailer": "^6.6.5",
-    "nodemon": "^2.0.4",
+    "nodemon": "^2.0.13",
     "uuid": "^8.3.2"
+  },
+  "engines":{
+    "node":"16.7.0"
   }
 }
