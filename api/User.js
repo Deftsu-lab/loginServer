@@ -15,8 +15,6 @@ const bcrypt = require("bcrypt");
 
 //email stuff
 const nodemailer = require("nodemailer");
-const { google } = require("googleapis");
-const OAuth2 = google.auth.OAuth2;
 
 //unique string
 const { v4: uuidv4 } = require("uuid");
@@ -139,7 +137,7 @@ const sendVerificationEmail = ({ _id, email }, res) => {
 
 	//mail options
 	const mailOptions = {
-		from: process.env.AUTH_EMAIL,
+		from: '"Plugged" <process.env.AUTH_EMAIL>',
 		to: email,
 		subject: "Verify your Email",
 		html: `<p>Verify your email adress to complete the signup and login to your account.</p>
@@ -400,11 +398,11 @@ const sendResetEmail = ({ _id, email }, redirectUrl, res) => {
 
 			//mail options
 			const mailOptions = {
-				from: process.env.AUTH_EMAIL,
+				from: '"Plugged"', //<process.env.AUTH_EMAIL>
 				to: email,
 				subject: "Password Reset",
 				html: `<p>We heared that you lost your password.</p> <p>Don't worry, use the link below to reset it.</p>
-          		<p><b>This link expires in 15 minutes</b>.</p><p>Press <a href=${redirectUrl + "/" + _id + "/" + resetString}>here</a> to proceed.</p>`,
+          		<p><b>This link expires in 15 minutes</b>.</p><p>Press <a href=${redirectUrl + "/" + _id + "/" + resetString} deeplink="true">here</a> to proceed.</p>`,
 			};
 			//hash the reset string
 			const saltRounds = 10;
