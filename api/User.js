@@ -32,6 +32,7 @@ const { error } = require("console");
 
 let transporter = nodemailer.createTransport({
 	service: "outlook",
+	name: Heroku,
 	auth: {
 		user: process.env.AUTH_EMAIL,
 		pass: process.env.AUTH_PASS,
@@ -398,11 +399,13 @@ const sendResetEmail = ({ _id, email }, redirectUrl, res) => {
 
 			//mail options
 			const mailOptions = {
-				from: '"Plugged"', //<process.env.AUTH_EMAIL>
+				from: process.env.AUTH_EMAIL,
 				to: email,
 				subject: "Password Reset",
 				html: `<p>We heared that you lost your password.</p> <p>Don't worry, use the link below to reset it.</p>
-          		<p><b>This link expires in 15 minutes</b>.</p><p>Press <a href=${redirectUrl + "/" + _id + "/" + resetString} deeplink="true">here</a> to proceed.</p>`,
+          		<p><b>This link expires in 15 minutes</b>.</p><p>Press <a href=${
+								redirectUrl + "/" + _id + "/" + resetString
+							} deeplink="true">here</a> to proceed.</p>`,
 			};
 			//hash the reset string
 			const saltRounds = 10;
