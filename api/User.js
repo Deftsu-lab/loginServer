@@ -194,6 +194,7 @@ const sendVerificationEmail = ({ _id, email }, res) => {
 		});
 };
 
+
 //verify email
 router.get("/verify/:userId/:uniqueString", (req, res) => {
 	let { userId, uniqueString } = req.params;
@@ -403,8 +404,8 @@ const sendResetEmail = ({ _id, email }, redirectUrl, res) => {
 				subject: "Password Reset",
 				html: `<p>We heared that you lost your password.</p> <p>Don't worry, use the link below to reset it.</p>
           		<p><b>This link expires in 15 minutes</b>.</p><p>Press <a href=${
-								redirectUrl + "/" + _id + "/" + resetString
-							} deeplink="true">here</a> to proceed.</p>`,
+								redirectUrl + "exp://192.168.178.27:19000/--/resetPass/" + _id + "/" + resetString
+							}>here</a> to proceed.</p>`,
 			};
 			//hash the reset string
 			const saltRounds = 10;

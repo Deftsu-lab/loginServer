@@ -1,6 +1,7 @@
 // mongodb
 require("./config/db");
 
+const deeplink = require("node-deeplink");
 const app = require("express")();
 const port = process.env.PORT || 5000;
 
@@ -16,6 +17,14 @@ app.use(bodyParser());
 
 app.use("/user", UserRouter);
 
+app.get(
+    "resetUrl", 
+    deeplink({
+      //fallback: "seite muss noch"
+      //android_package_name:
+      //ios_store_link: 
+    }));
+
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+	console.log(`Server running on port ${port}`);
 });
