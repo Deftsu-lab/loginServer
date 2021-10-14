@@ -32,7 +32,6 @@ const { error } = require("console");
 
 let transporter = nodemailer.createTransport({
 	service: "outlook",
-	name: Heroku,
 	auth: {
 		user: process.env.AUTH_EMAIL,
 		pass: process.env.AUTH_PASS,
