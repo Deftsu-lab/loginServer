@@ -137,7 +137,7 @@ const sendVerificationEmail = ({ _id, email }, res) => {
 
 	//mail options
 	const mailOptions = {
-		from: '"Plugged" <process.env.AUTH_EMAIL>',
+		from: process.env.AUTH_EMAIL,
 		to: email,
 		subject: "Verify your Email",
 		html: `<p>Verify your email adress to complete the signup and login to your account.</p>
@@ -193,7 +193,6 @@ const sendVerificationEmail = ({ _id, email }, res) => {
 			});
 		});
 };
-
 
 //verify email
 router.get("/verify/:userId/:uniqueString", (req, res) => {
@@ -403,9 +402,7 @@ const sendResetEmail = ({ _id, email }, redirectUrl, res) => {
 				to: email,
 				subject: "Password Reset",
 				html: `<p>We heared that you lost your password.</p> <p>Don't worry, use the link below to reset it.</p>
-          		<p><b>This link expires in 15 minutes</b>.</p><p>Press <a href=${
-								redirectUrl + "exp://192.168.178.27:19000/--/resetPass/" + _id + "/" + resetString
-							}>here</a> to proceed.</p>`,
+          		<p><b>This link expires in 15 minutes</b>.</p><p>Press <a href=${redirectUrl + "/" + _id + "/" + resetString}>here</a> to proceed.</p>`,
 			};
 			//hash the reset string
 			const saltRounds = 10;

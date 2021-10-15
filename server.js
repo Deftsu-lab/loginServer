@@ -17,13 +17,6 @@ app.use(bodyParser());
 
 app.use("/user", UserRouter);
 
-app.get(
-    "resetUrl", 
-    deeplink({
-      fallback: "google.com" //seite muss noch gebaut werden
-      //android_package_name:
-      //ios_store_link: 
-    }));
 
 app.listen(port, () => {
 	console.log(`Server running on port ${port}`);
