@@ -472,7 +472,7 @@ router.post("/resetPassword", (req, res) => {
 				//password reset request exists so we proceed
 
 				const { expiresAt } = result[0];
-				const hashedResetString = result[0].ResetString;
+				const hashedResetString = result[0].resetString;
 
 				//checking if the link expired
 				if (expiresAt < Date.now()) {
