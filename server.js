@@ -20,7 +20,7 @@ app.use("/user", UserRouter);
 app.get(
     "resetUrl", 
     deeplink({
-      //fallback: "seite muss noch"
+      fallback: "google.com" //seite muss noch gebaut werden
       //android_package_name:
       //ios_store_link: 
     }));
