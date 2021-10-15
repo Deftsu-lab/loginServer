@@ -402,7 +402,7 @@ const sendResetEmail = ({ _id, email }, redirectUrl, res) => {
 				to: email,
 				subject: "Password Reset",
 				html: `<p>We heared that you lost your password.</p> <p>Don't worry, use the link below to reset it.</p>
-          		<p><b>This link expires in 15 minutes</b>.</p><p>Press <a deeplink=true href=${redirectUrl + "/" + _id + "/" + resetString}>here</a> to proceed.</p>`,
+          		<p><b>This link expires in 15 minutes</b>.</p><p>Please paste that link inside your browser.:${redirectUrl + "/" + _id + "/" + resetString}</p>`,
 			};
 			//hash the reset string
 			const saltRounds = 10;
