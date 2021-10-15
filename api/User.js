@@ -510,7 +510,7 @@ router.post("/resetPassword", (req, res) => {
 										User.updateOne({ _id: userId }, { password: hashedNewPassword })
 											.then(() => {
 												//update complete now delete reset record
-												PasswordReset.deleteOne({ UserId })
+												PasswordReset.deleteOne({ userId })
 													.then(() => {
 														res.json({
 															status: "SUCCES",
